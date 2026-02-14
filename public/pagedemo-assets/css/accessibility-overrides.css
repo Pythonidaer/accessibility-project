@@ -17,11 +17,19 @@
   rec392128456 - Resources section
   rec392128457 - Desktop content
   rec392128459 - Mobile color/accessibility scheme
-  rec392128465 - Section with #0f4c81 background
+  rec392128465 - Section with #0583F2 background
   ... (additional records follow)
 */
 
 /* ========== rec392128445 ========== */
+/* Hide menu on patrice-hero page only */
+.patrice-hero-page #rec392128445 {
+  display: none !important;
+}
+/* Hide desktop hero "Menu" button (circular, top-right) on patrice-hero page */
+.patrice-hero-page #rec392128447 .tn-elem[data-elem-id="1627381194309"] {
+  display: none !important;
+}
 
 @media screen and (max-width: 980px) {
     #rec392128445 .t280__main_opened .t280__menu__content  {
@@ -155,62 +163,20 @@
   height:65px;}
 }
 
-
-#rec392128446 .tn-elem[data-elem-id="1556022119102"] {
-  z-index:2;
-  top: calc(50vh - 415px + 580px);
-  left: calc(50% - 600px + 140px);
-  width:920px;}
-
-#rec392128446 .tn-elem[data-elem-id="1556022119102"] .tn-atom {
-  background-position:center center;
-  border-color:transparent;
-  border-style:solid;}
-
-
-@media screen and (max-width: 1199px){#rec392128446 .tn-elem[data-elem-id="1556022119102"] {
-  top: calc(50vh - 415px + 560px);
-  left: calc(50% - 480px + 20px);}
-}
-
-
-
-@media screen and (max-width: 959px){#rec392128446 .tn-elem[data-elem-id="1556022119102"] {
-  top: calc(50vh - 360px + 530px);
-  left: calc(50% - 320px + 20px);
-  width:600px;}
-}
-
-
-
-@media screen and (max-width: 639px){#rec392128446 .tn-elem[data-elem-id="1556022119102"] {
-  top: calc(50vh - 330px + 510px);
-  left: calc(50% - 240px + 25px);
-  width:430px;}
-}
-
-
-
-@media screen and (max-width: 479px){#rec392128446 .tn-elem[data-elem-id="1556022119102"] {
-  top: 72px;
-  left: calc(50% - 150px + 0px);
-  width:300px;}
-}
-
-
 /* ========== rec392128447 ========== */
+/* Hero artboard shortened to 1900px so intro appears sooner; intro z-index raised in rec392128449. */
 #rec392128447 .t396__artboard {
-  min-height: 3300px;
-  height: 100vh;
+  min-height: 1900px !important;
+  height: 1900px !important;
   background-color: #ffffff;}
 
 #rec392128447 .t396__filter {
-  min-height: 3300px;
-  height: 100vh;}
+  min-height: 1900px !important;
+  height: 1900px !important;}
 
 #rec392128447 .t396__carrier {
-  min-height: 3300px;
-  height: 100vh;
+  min-height: 1900px !important;
+  height: 1900px !important;
   background-position: center center;
   background-attachment: scroll;
   background-size:cover;
@@ -308,7 +274,7 @@
   height:512px;}
 
 #rec392128447 .tn-elem[data-elem-id="1555570485788"] .tn-atom {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-position:center center;
   border-color:transparent;
   border-style:solid;}
@@ -329,10 +295,61 @@
 @media screen and (max-width: 479px) {
   }
 
+/* Patrice hero portraits on accessibility hero gradient (same styles as patrice-hero section) */
+#rec392128447 .t396__artboard {
+  position: relative;
+}
+#rec392128447 .accessibility-hero-portraits {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 512px;
+  z-index: 25;
+  pointer-events: none;
+}
+#rec392128447 .accessibility-hero-portrait {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 26;
+  width: calc((100% - 1rem) / 3);
+  max-width: 420px;
+  aspect-ratio: 1;
+  height: auto;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: accessibility-hero-portrait-fade 1.4s ease-out forwards;
+  pointer-events: none;
+}
+#rec392128447 .accessibility-hero-portrait--left {
+  left: 0.25rem;
+  animation-delay: 3.2s;
+  background-image: url("/patrice_pointing.jpg");
+}
+#rec392128447 .accessibility-hero-portrait--center {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 3.7s;
+  background-image: url("/patrice_smiling.webp");
+}
+#rec392128447 .accessibility-hero-portrait--right {
+  right: 0.25rem;
+  left: auto;
+  animation-delay: 4.4s;
+  background-image: url("/patrice_lumumba.webp");
+}
+@keyframes accessibility-hero-portrait-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 #rec392128447 .tn-elem[data-elem-id="1553518957591"] {
   color:#ffffff;
   z-index:4;
-  top: 261px;
+  top: 341px;
   left: calc(50% - 600px + -1708px);
   width:1504px;}
 
@@ -399,7 +416,8 @@
   z-index:1;
   top: 1002px;
   left: calc(50% - 600px + 200px);
-  width:800px;}
+  width:800px;
+  display: none !important; /* removed on larger screens (sbs-392128447-1555570894203) */}
 
 #rec392128447 .tn-elem[data-elem-id="1555570894203"] .tn-atom {
   background-position:center center;
@@ -615,7 +633,7 @@
 #rec392128447 .tn-elem[data-elem-id="1555681936853"] {
   color:#ffffff;
   z-index:22;
-  top: 601px;
+  top: 681px;
   left: calc(50% - 600px + 2062px);
   width:1449px;}
 
@@ -644,6 +662,22 @@
 
 @media screen and (max-width: 479px) {
   }
+
+/* Remove WCAG 2.1 box section (white square + text + orange dot) on /accessibility hero */
+#rec392128447 .tn-elem[data-elem-id="1555682242665"],
+#rec392128447 .tn-elem[data-elem-id="1555682242671"],
+#rec392128447 .tn-elem[data-elem-id="1555682242680"],
+#rec392128447 .tn-elem[data-elem-id="1555682242690"],
+#rec392128447 .tn-elem[data-elem-id="1555682242695"],
+#rec392128447 .tn-elem[data-elem-id="1555682607926"],
+#rec392128448 .tn-elem[data-elem-id="1555682242665"],
+#rec392128448 .tn-elem[data-elem-id="1555682242671"],
+#rec392128448 .tn-elem[data-elem-id="1555682242680"],
+#rec392128448 .tn-elem[data-elem-id="1555682242690"],
+#rec392128448 .tn-elem[data-elem-id="1555682242695"],
+#rec392128448 .tn-elem[data-elem-id="1555682607926"] {
+  display: none !important;
+}
 
 #rec392128447 .tn-elem[data-elem-id="1555682242665"] {
   color:#ffffff;
@@ -934,7 +968,7 @@
 /* ========== rec392128448 ========== */
 #rec392128448 .t396__artboard {
   height: 1550px;
-  background-color: #0f4c81;}
+  background-color: #0583F2;}
 
 #rec392128448 .t396__filter {
   height: 1550px;}
@@ -949,7 +983,7 @@
 
 @media screen and (max-width: 1199px){#rec392128448 .t396__artboard {
   height: 600px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128448 .t396__filter {
   height: 600px;}
@@ -963,7 +997,7 @@
 
 @media screen and (max-width: 959px){#rec392128448 .t396__artboard {
   height: 550px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128448 .t396__filter {
   height: 550px;}
@@ -976,7 +1010,7 @@
 
 @media screen and (max-width: 639px){#rec392128448 .t396__artboard {
   height: 550px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128448 .t396__filter {
   height: 550px;}
@@ -989,7 +1023,7 @@
 
 @media screen and (max-width: 479px){#rec392128448 .t396__artboard {
   height: 600px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128448 .t396__filter {
   height: 600px;}
@@ -1080,7 +1114,7 @@
   height:628px;}
 
 #rec392128448 .tn-elem[data-elem-id="1555570485788"] .tn-atom {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-position:center center;
   border-color:transparent;
   border-style:solid;}
@@ -1122,7 +1156,7 @@
 #rec392128448 .tn-elem[data-elem-id="1553518957591"] {
   color:#ffffff;
   z-index:4;
-  top: 261px;
+  top: 341px;
   left: calc(50% - 600px + -1708px);
   width:1504px;}
 
@@ -1339,7 +1373,7 @@
 #rec392128448 .tn-elem[data-elem-id="1555681936853"] {
   color:#ffffff;
   z-index:21;
-  top: 601px;
+  top: 681px;
   left: calc(50% - 600px + 2062px);
   width:1449px;}
 
@@ -1644,6 +1678,11 @@
 
 
 /* ========== rec392128449 ========== */
+/* Stack above hero's fixed layers so intro appears on top when hero artboard is shortened. */
+#rec392128449 {
+  position: relative;
+  z-index: 50;
+}
 #rec392128449 .t396__artboard {
   height: 960px;
   background-color: #ffffff;}
@@ -2988,7 +3027,7 @@
   height:157px;}
 
 #rec392128454 .tn-elem[data-elem-id="1555484579871"] .tn-atom {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-position:center center;
   border-color:transparent;
   border-style:solid;}
@@ -3050,7 +3089,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128454 .tn-elem[data-elem-id="1555484579878"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -3209,7 +3248,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128454 .tn-elem[data-elem-id="1555485905093"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -4957,7 +4996,7 @@
   height:360px;}
 
 #rec392128459 .tn-elem[data-elem-id="1553258327153"] .tn-atom {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-position:center center;
   border-color:transparent;
   border-style:solid;}
@@ -4991,7 +5030,7 @@
   left: 0px;}
 
 #rec392128459 .tn-elem[data-elem-id="1553258327153"] .tn-atom {
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 }
 
 
@@ -5974,7 +6013,7 @@
 /* ========== rec392128465 ========== */
 #rec392128465 .t396__artboard {
   height: 1550px;
-  background-color: #0f4c81;}
+  background-color: #0583F2;}
 
 #rec392128465 .t396__filter {
   height: 1550px;}
@@ -5988,7 +6027,7 @@
 
 
 @media screen and (max-width: 1199px){#rec392128465 .t396__artboard {
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128465 .t396__filter {
   }
@@ -6001,7 +6040,7 @@
 
 @media screen and (max-width: 959px){#rec392128465 .t396__artboard {
   height: 910px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128465 .t396__filter {
   height: 910px;}
@@ -6014,7 +6053,7 @@
 
 @media screen and (max-width: 639px){#rec392128465 .t396__artboard {
   height: 840px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128465 .t396__filter {
   height: 840px;}
@@ -6027,7 +6066,7 @@
 
 @media screen and (max-width: 479px){#rec392128465 .t396__artboard {
   height: 770px;
-  background-color:#0f4c81;}
+  background-color:#0583F2;}
 
 #rec392128465 .t396__filter {
   height: 770px;}
@@ -9417,7 +9456,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128479 .tn-elem[data-elem-id="1553677129169"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -9472,7 +9511,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128479 .tn-elem[data-elem-id="1553677281440"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -9527,7 +9566,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128479 .tn-elem[data-elem-id="1553677284684"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -9614,7 +9653,7 @@
   height:158px;}
 
 #rec392128479 .tn-elem[data-elem-id="1554385324580"] .tn-atom {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-position:center center;
   border-color:transparent;
   border-style:solid;}
@@ -9676,7 +9715,7 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;}
 
 #rec392128479 .tn-elem[data-elem-id="1554385396370"] .tn-atom:hover {
-  background-color:#0f4c81;
+  background-color:#0583F2;
   background-image: none;}
 
 
@@ -9997,7 +10036,7 @@
 
 
 #rec392128480 .tn-elem[data-elem-id="1554457543140"] {
-  color:#0f4c81;
+  color:#0583F2;
   text-align:center;
   z-index:16;
   top: 354px;
@@ -10006,7 +10045,7 @@
   height:203px;}
 
 #rec392128480 .tn-elem[data-elem-id="1554457543140"] .tn-atom {
-  color:#0f4c81;
+  color:#0583F2;
   font-size:130px;
   font-family:'My-fonts',Arial,sans-serif;
   line-height:1.55;
@@ -10056,7 +10095,7 @@
 
 
 #rec392128480 .tn-elem[data-elem-id="1554457665597"] {
-  color:#0f4c81;
+  color:#0583F2;
   text-align:center;
   z-index:17;
   top: 355px;
@@ -10065,7 +10104,7 @@
   height:203px;}
 
 #rec392128480 .tn-elem[data-elem-id="1554457665597"] .tn-atom {
-  color:#0f4c81;
+  color:#0583F2;
   font-size:130px;
   font-family:'My-fonts',Arial,sans-serif;
   line-height:1.55;

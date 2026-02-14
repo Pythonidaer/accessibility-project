@@ -5,7 +5,32 @@ export default function TableOfContents() {
     <main>
       <h1>Table of Contents</h1>
       <nav aria-label="Table of contents">
-        <ul>
+        <h2 id="accessibility-home">Accessibility home (sections)</h2>
+        <ul aria-labelledby="accessibility-home">
+          <li>
+            <Link href="/accessibility">Accessibility home (full page)</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections">Accessibility sections index</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections/nav-and-hero">Nav and Hero</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections/intro-and-key-guides">Intro and Key Guides</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections/wcag-section">WCAG Section</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections/resources-and-rest">Resources and Rest</Link>
+          </li>
+          <li>
+            <Link href="/accessibility/sections/patrice-hero">Patrice Hero (animated bar)</Link>
+          </li>
+        </ul>
+        <h2 id="subject-matter">Subject matter &amp; guides</h2>
+        <ul aria-labelledby="subject-matter">
           <li>
             <Link href="/subject-matter-expert">Subject Matter Expert on Digital Accessibility</Link>
           </li>

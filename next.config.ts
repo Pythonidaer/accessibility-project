@@ -4,9 +4,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // Serve root with the same route as patrice-hero (same layout + page)
         {
           source: "/",
-          destination: "/accessibility-home.html",
+          destination: "/accessibility/sections/patrice-hero",
         },
       ],
     };

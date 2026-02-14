@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export function ConditionalHeader() {
   const pathname = usePathname();
-  if (pathname === "/accessibility") return null;
+  if (pathname === "/" || pathname?.startsWith("/accessibility")) return null;
   return (
     <header>
       <nav aria-label="Main">

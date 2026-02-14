@@ -1,0 +1,201 @@
+/* Bar: sweeps left-to-right, then expands downward. Whole block is one color that transitions to the next. */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Blue behind the gradient: animates in with bar; on scroll it grows and sits above filler/blueSection so only this layer is visible. */
+.blueBehindGradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 66.666vh;
+  transform-origin: top center;
+  background-color: #0583F2;
+  z-index: 0;
+  pointer-events: none;
+  animation: patrice-blue-in 3.2s ease-in-out forwards;
+}
+
+/* Match bar timing exactly: hold 33.333vh during width phase (0–35%), then grow to 66.666vh (35–100%). */
+@keyframes patrice-blue-in {
+  0%,
+  35% {
+    height: 33.333vh;
+  }
+  100% {
+    height: 66.666vh;
+  }
+}
+
+/* Hero: 2/3 viewport; opaque so blue behind is never visible during gradient animation. Above expanding blue. */
+.heroBlock {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 66.666vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Fills bottom 1/3 of first viewport so no blue is visible on load (hero is 2/3 vh). */
+.belowHeroFiller {
+  width: 100%;
+  height: 33.333vh;
+  background-color: #fff;
+}
+
+/* Scroll area below; only enters viewport after user scrolls. */
+.blueSection {
+  width: 100%;
+  height: 340vh;
+  background-color: #fff;
+}
+
+/* Fixed overlay: above blue and any Tilda layers (portal to body + high z-index). */
+.scrollTextOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: 9999;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+/* One word higher, one lower; just barely overlapping. */
+.scrollTextLeft,
+.scrollTextRight {
+  position: absolute;
+  transform-origin: center center;
+  color: #fff;
+  font-size: clamp(4rem, 22vw, 520px);
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Patrice higher, Lumumba lower — generous vertical spacing (like Digital / Accessibility). */
+.scrollTextLeft {
+  left: 0;
+  top: 28%;
+  transform-origin: left center;
+}
+
+.scrollTextRight {
+  right: 0;
+  left: auto;
+  top: 68%;
+  transform-origin: right center;
+}
+
+.scrollSpacer {
+  height: 0;
+  width: 100%;
+}
+
+/* Animated color bar: fills hero (2/3 vh) so blue appears directly below on scroll. */
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 33.333vh;
+  transform-origin: left top;
+  animation:
+    patrice-hero-size 3.2s ease-in-out forwards,
+    patrice-hero-color 5s linear infinite;
+}
+
+@keyframes patrice-hero-size {
+  0% {
+    width: 0;
+    height: 33.333vh;
+  }
+  35% {
+    width: 100%;
+    height: 33.333vh;
+  }
+  100% {
+    width: 100%;
+    height: 66.666vh;
+  }
+}
+
+/* Infinite cycle: #D91438 → #0583F2 → #F2CE1B → #F2921D → back to red (seamless loop) */
+@keyframes patrice-hero-color {
+  0% {
+    background-color: #D91438;
+  }
+  25% {
+    background-color: #0583F2;
+  }
+  50% {
+    background-color: #F2CE1B;
+  }
+  75% {
+    background-color: #F2921D;
+  }
+  100% {
+    background-color: #D91438;
+  }
+}
+
+/* Three portraits in a row; absolute in hero, contained by hero overflow. */
+.portrait,
+.portraitSmiling,
+.portraitPointing {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: calc((100% - 1rem) / 3);
+  max-width: 420px;
+  aspect-ratio: 1;
+  height: auto;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: patrice-hero-portrait-fade 1.4s ease-out forwards;
+  pointer-events: none;
+}
+
+.portrait {
+  right: 0.25rem;
+  background-image: url("/patrice_lumumba.webp");
+  animation-delay: 4.4s;
+}
+
+.portraitSmiling {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("/patrice_smiling.webp");
+  animation-delay: 3.7s;
+}
+
+.portraitPointing {
+  left: 0.25rem;
+  background-image: url("/patrice_pointing.jpg");
+  animation-delay: 3.2s;
+}
+
+@keyframes patrice-hero-portrait-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
